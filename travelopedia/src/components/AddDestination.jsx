@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
 function AddDestination() {
+  const [newCity, setNewCity] = useState("");
+  const [newCountry, setNewCountry] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add Destination
+    setNewCity("");
+    setNewCountry();
+  };
   return (
     <div className="p-4">
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="">
           <h4>Enter a new destination</h4>
           <div className="flex flex-col">
@@ -11,6 +20,7 @@ function AddDestination() {
               type="text"
               className="form-control"
               placeholder="Enter a city.."
+              onChange={(e) => setNewCity(e.target.value)}
             />
           </div>
           <div className="flex flex-col">
@@ -18,6 +28,7 @@ function AddDestination() {
               type="text"
               className="form-control"
               placeholder="Enter a country.."
+              onChange={(e) => setNewCountry(e.target.value)}
             />
           </div>
           <div className="flex flex-col">
