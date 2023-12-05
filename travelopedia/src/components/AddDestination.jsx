@@ -16,7 +16,7 @@ function AddDestination() {
       daysNeeded: parseInt(Math.random() * 10 + 1),
     });
     setNewCity("");
-    setNewCountry();
+    setNewCountry("");
   };
   return (
     <div className="p-4">

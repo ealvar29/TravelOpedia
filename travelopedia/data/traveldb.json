@@ -13,9 +13,15 @@
       "daysNeeded": 5
     },
     {
-      "id": 26.83316367972126,
-      "city": "atlanta",
-      "country": "USA",
+      "id": 88.25985145692657,
+      "city": "Tokyo",
+      "country": "Japan",
+      "daysNeeded": 4
+    },
+    {
+      "id": 93.12752244559282,
+      "city": "Mexico City",
+      "country": "Mexico",
       "daysNeeded": 5
     }
   ]

@@ -3,18 +3,28 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const destinationAPI = createApi({
   reducerPath: "apiDestination",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5001" }),
+  tagTypes: ["Destinations"],
   endpoints: (builder) => ({
     // Query -> GET
     // Mutation -> POST/PUT/DELETE
     getAllDestination: builder.query({
       query: () => "destination",
+      providesTags: ["Destinations"],
     }),
+    // example of adding query but with ID
+    // getAllDestination: builder.query({
+    //   query: (id) => `destination${id}`,
+    //   providesTags: (id) => {
+    //     return [{ type: "Destinations", id: id }];
+    //   },
+    // }),
     addDestination: builder.mutation({
       query: (destination) => ({
         url: "destination",
         method: "POST",
         body: destination,
       }),
+      invalidatesTags: ["Destinations"],
     }),
     updateDestination: builder.mutation({
       query: (destination) => ({
@@ -22,13 +32,15 @@ export const destinationAPI = createApi({
         method: "PUT",
         body: destination,
       }),
+      invalidatesTags: ["Destinations"],
     }),
     deleteDestination: builder.mutation({
-      query: ({ id }) => ({
+      query: (id) => ({
         url: `destination/${id}`,
         method: "DELETE",
         body: id,
       }),
+      invalidatesTags: ["Destinations"],
     }),
   }),
 });
