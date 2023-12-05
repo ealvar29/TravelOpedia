@@ -1,12 +1,20 @@
 import React, { useState } from "react";
+import { useAddDestinationMutation } from "../api/destinationApi";
 
 function AddDestination() {
   const [newCity, setNewCity] = useState("");
   const [newCountry, setNewCountry] = useState("");
+  const [addDestination] = useAddDestinationMutation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add Destination
+    addDestination({
+      id: Math.random() * 100,
+      city: newCity,
+      country: newCountry,
+      daysNeeded: parseInt(Math.random() * 10 + 1),
+    });
     setNewCity("");
     setNewCountry();
   };
