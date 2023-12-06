@@ -8,7 +8,12 @@ export const destinationAPI = createApi({
     // Query -> GET
     // Mutation -> POST/PUT/DELETE
     getAllDestination: builder.query({
-      query: () => "destination",
+      query: () => ({
+        url: "destination",
+        method: "GET",
+        params: {},
+      }),
+      transformErrorResponse: (res) => res.sort((a, b) => b.id - a.id),
       providesTags: ["Destinations"],
     }),
     // example of adding query but with ID
